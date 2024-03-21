@@ -4,9 +4,13 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+import static javax.persistence.InheritanceType.TABLE_PER_CLASS;
+
 @Entity
 @Table(name = "eventi")
-public class Event {
+@Inheritance(strategy = TABLE_PER_CLASS)
+@DiscriminatorColumn(name = "tipologia")
+public abstract class Event {
     @Id
     @GeneratedValue
     private long id;

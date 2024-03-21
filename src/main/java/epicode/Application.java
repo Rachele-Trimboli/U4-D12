@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
@@ -30,7 +31,7 @@ public class Application {
         // ******************** SALVATAGGIO LOCATIONS, UTENTI E EVENTI ************************
 
         Location location1 = new Location(faker.address().city(), faker.address().cityName());
-//         locationsDAO.save(location1);
+         locationsDAO.save(location1);
 
         Location location2 = new Location(faker.address().city(), faker.address().cityName());
 //         locationsDAO.save(location2);
@@ -48,6 +49,13 @@ public class Application {
 //                    rndm.nextInt(1, 3) == 1 ? TipoEvento.PRIVATO : TipoEvento.PUBBLICO,
 //                    rndm.nextInt(1, 1000),rndm.nextInt(0, 2) == 0 ? location1: location2));
 //        }
+
+
+//        Concerto concerto1 = new Concerto("Adele in Concerto",LocalDate.of(2024,3,28),"Bellissimo",TipoEvento.PUBBLICO,2000,location1,Genere.POP,true);
+//        eventsDAO.save(concerto1);
+
+
+
 
         // ******************** PARTECIPAZIONE AD UN EVENTO ************************
 
@@ -68,6 +76,8 @@ public class Application {
         // Eliminando un evento dovrebbe eliminare anche le partecipazioni ad esso collegate
 //        eventsDAO.findByIdAndDelete(24);
 
+        List<Concerto> listaConcertiInStreaming = eventsDAO.getConcertiInStreaming();
+        System.out.println(listaConcertiInStreaming);
 
         em.close();
         emf.close();

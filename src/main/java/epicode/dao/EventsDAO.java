@@ -1,9 +1,12 @@
 package epicode.dao;
 
+import epicode.entities.Concerto;
 import epicode.entities.Event;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class EventsDAO {
     private EntityManager em;
@@ -45,4 +48,15 @@ public class EventsDAO {
             System.out.println(e.getMessage());
         }
     }
+
+
+    public List<Concerto> getConcertiInStreaming(){
+        TypedQuery<Concerto> query = em.createQuery("SELECT c FROM Concerto c WHERE c.inStreaming = true ", Concerto.class);
+        return query.getResultList();
+    }
+
+
+
+
+
 }

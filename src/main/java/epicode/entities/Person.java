@@ -3,6 +3,7 @@ package epicode.entities;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "persone")
@@ -19,6 +20,14 @@ public class Person {
 
 	@OneToMany(mappedBy = "persona")
 	private List<Attendance> listaPartecipazioni;
+
+
+	@OneToOne(mappedBy = "vincitore")
+	private GaraDiAtletica garaVinta;
+
+	@ManyToOne
+	@JoinColumn(name = "garadiatletica_id")
+	private GaraDiAtletica garadiatletica;
 
 	public Person() {
 	}
