@@ -10,6 +10,8 @@ import static javax.persistence.InheritanceType.TABLE_PER_CLASS;
 @Table(name = "eventi")
 @Inheritance(strategy = TABLE_PER_CLASS)
 @DiscriminatorColumn(name = "tipologia")
+@NamedQuery(name = "partiteVinteInCasa", query = "SELECT p FROM PartitaDiCalcio p WHERE p.squadraInCasa = :squadra AND p.squadraVincente = :squadra")
+@NamedQuery(name = "partiteVinteInTrasferta", query = "SELECT p FROM PartitaDiCalcio p WHERE p.dquadraFuoriCasa = :squadra AND p.squadraVincente = :squadra")
 public abstract class Event {
     @Id
     @GeneratedValue

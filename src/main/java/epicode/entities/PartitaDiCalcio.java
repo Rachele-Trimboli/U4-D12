@@ -10,6 +10,9 @@ public class PartitaDiCalcio extends Event {
     private int golSquadraInCasa;
     private int golSquadraFuoriCasa;
 
+    public PartitaDiCalcio(){
+
+    }
 
     public PartitaDiCalcio(String squadraInCasa, String dquadraFuoriCasa, String squadraVincente, int golSquadraInCasa, int golSquadraFuoriCasa) {
         this.squadraInCasa = squadraInCasa;

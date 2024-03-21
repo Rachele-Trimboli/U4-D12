@@ -54,6 +54,10 @@ public class Application {
 //        Concerto concerto1 = new Concerto("Adele in Concerto",LocalDate.of(2024,3,28),"Bellissimo",TipoEvento.PUBBLICO,2000,location1,Genere.POP,true);
 //        eventsDAO.save(concerto1);
 
+        PartitaDiCalcio partita1 = new PartitaDiCalcio("Roma","Frosinone","Roma",10,2);
+//        eventsDAO.save(partita1);
+        PartitaDiCalcio partita2 = new PartitaDiCalcio("Roma","Milan","Milan",10,2);
+//        eventsDAO.save(partita2);
 
 
 
@@ -78,6 +82,15 @@ public class Application {
 
         List<Concerto> listaConcertiInStreaming = eventsDAO.getConcertiInStreaming();
         System.out.println(listaConcertiInStreaming);
+
+        List<Concerto> listaConcertiPerGenere = eventsDAO.getConcertiPerGenere(Genere.POP);
+        System.out.println(listaConcertiPerGenere);
+
+
+        System.out.println( eventsDAO.partiteVinteInCasa("Roma"));
+        System.out.println( eventsDAO.partiteVinteInTrasferta("Milan"));
+
+
 
         em.close();
         emf.close();
